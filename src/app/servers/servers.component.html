@@ -1,0 +1,31 @@
+<p>servers works!</p>
+<label>Server Name</label>
+<input type="text" class="form-control" [(ngModel)]="serverName" >
+{{serverName}}
+<button class="btn btn-primary" [disabled]="!allowNewServer" (click) ="onCreateServer()">
+  
+    Add
+</button>
+<!-- <p>{{serverCreationstatus}}</p>   -->
+
+<p *ngIf="serverCreated;else noServer">Server name is created . Server name is {{serverName}}</p>
+<ng-template #noServer>
+    <p>
+        No server is created 
+    </p>
+</ng-template>
+<input type="text" class="form-control" [(ngModel)] ="userName">
+
+<p>{{userName}}</p>
+
+<button type="submit" [disabled]="!(userName)" (click)="resetUserName()">Press</button>
+
+<app-server *ngFor ="let server of servers"></app-server>
+
+<button type="text" (click)="addTimeStamp(openText)">
+Display Text
+</button>
+<p *ngIf="openText">This is based on button click</p>
+<div *ngFor ="let time of timestampList ; let  i =index"  >
+<div [ngStyle]="{backgroundColor:(i>=4?'blue':'transparent')}" [ngClass]="{indexReached:i>=4}">{{time}}</div>
+</div>
